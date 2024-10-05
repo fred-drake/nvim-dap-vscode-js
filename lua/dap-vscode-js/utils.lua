@@ -50,7 +50,7 @@ local function file_exists(name)
 end
 
 local function debugger_entrypoint(debugger_path)
-    return M.join_paths(debugger_path, "out/src/vsDebugServer.js")
+    return M.join_paths(debugger_path, "js-debug/src/dapDebugServer.js")
 end
 
 ---@param config Settings
@@ -114,7 +114,7 @@ function M.start_debugger(config, on_launch, on_exit, on_error, on_stderror)
             return
         end
 
-        local port = 8123
+        local port = chunk:gsub("\n", "")
         on_launch(port, proc)
     end)
 
